@@ -8,7 +8,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://zimjobmatch-ychg-hvg1zj8td-kumbiraitsvatayi-8564s-projects.vercel.app",
+        "https://zimjobmatch-ychg.vercel.app",
         "https://*.vercel.app",
     ],
     allow_credentials=True,
