@@ -1,4 +1,3 @@
-// All API calls to the backend live here
 const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api"
 
 export async function fetchJobs({ search = "", location = "All", type = "All", minMatch = 0 } = {}) {
@@ -7,7 +6,6 @@ export async function fetchJobs({ search = "", location = "All", type = "All", m
   if (location !== "All") params.append("location", location)
   if (type !== "All") params.append("type", type)
   if (minMatch > 0) params.append("min_match", minMatch)
-
   const res = await fetch(`${BASE_URL}/jobs?${params.toString()}`)
   if (!res.ok) throw new Error("Failed to fetch jobs")
   return res.json()
