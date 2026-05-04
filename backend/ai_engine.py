@@ -1,12 +1,11 @@
 import os
 import json
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def generate_match(profile: dict, job: dict) -> dict:
@@ -61,7 +60,10 @@ Rules:
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
         text = response.text.strip()
 
         # Strip markdown code fences if present
@@ -75,7 +77,6 @@ Rules:
 
     except Exception as e:
         print(f"Gemini error: {e}")
-        # Fallback so the app never crashes
         return {
             "match": 70,
             "scores": {"skills": 70, "experience": 70, "culture": 70, "growth": 70},
