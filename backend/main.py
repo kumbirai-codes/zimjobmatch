@@ -17,4 +17,4 @@ app.include_router(profile.router, prefix="/api")
 
 @app.get("/")
 def root():
-    return {"message": "ZimJobMatch API is running ✦"}
+    return {"message": "ZimJobMatch API is running "}
