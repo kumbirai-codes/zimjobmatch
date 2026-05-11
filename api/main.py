@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import jobs, profile
+from .routes import jobs, profile
 
 app = FastAPI(title="ZimJobMatch API", version="1.0.0")
 
@@ -17,4 +17,4 @@ app.include_router(profile.router, prefix="/api")
 
 @app.get("/")
 def root():
-    return {"message": "ZimJobMatch API is running ✦"}
+    return {"message": "ZimJobMatch API is running "}

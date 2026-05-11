@@ -1,11 +1,12 @@
 from fastapi import APIRouter, Query
 from typing import Optional
-from data.jobs_data import JOBS
-from data.profile_data import PROFILE
-from ai_engine import generate_match
+
+# FIXED: Added '..' to go up to the api folder to find data and ai_engine
+from ..data.jobs_data import JOBS
+from ..data.profile_data import PROFILE
+from ..ai_engine import generate_match
 
 router = APIRouter()
-
 
 @router.get("/jobs")
 def get_jobs(
